@@ -4,9 +4,13 @@
 include Makefile.srcs
 
 # General configuration variables:
-CC = gcc
-CXX = g++
-AR = ar
+#CC = gcc
+#CXX = g++
+#AR = ar
+CC = arm-linux-gcc
+CXX = arm-linux-g++
+AR = arm-linux-ar
+
 
 INCDIR = /usr/include
 INSTALLDIR = /usr/lib
@@ -14,8 +18,8 @@ INSTALLDIR = /usr/lib
 # Converts cr/lf to just lf
 DOS2UNIX = dos2unix
 
-COMPILERFLAGS = -O3 -fPIC -fexceptions -fvisibility=hidden
-LIBRARIES = -lstdc++
+COMPILERFLAGS = -O3 -fPIC -fexceptions -fvisibility=hidden -mfpu=neon -mfloat-abi=softfp
+LIBRARIES = -lstdc++ -mfpu=neon -mfloat-abi=softfp
 
 MODULES = $(SRCS:.c=.o)
 MODULES := $(MODULES:.cpp=.o)
